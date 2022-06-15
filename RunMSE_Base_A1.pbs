@@ -1,0 +1,22 @@
+#!/bin/tcsh
+#PBS -N MSE_Base_A1
+#PBS -l nodes=1:james:ppn=6
+#PBS -l walltime=72:00:00
+#PBS -m abe
+#PBS -M cpeterson@vims.edu
+## #PBS R
+
+## -N is name of job
+## - l nodes -- run on james cluster w 6 cores
+## walltime = 72 hrs
+## -m abe --> email when begins, ends, or aborts
+## -M email address
+
+# set working directory to where this text file was called from. 
+cd $PBS_O_WORKDIR
+
+# Load gcc/5.3.0 module
+    module load gcc/5.3.0
+
+# Run R script
+Rscript "Run_MSE_inParallel_HPC_Base_A1.R" >& OUT
